@@ -5,9 +5,13 @@
 2. Возможность расшфровки с положительным и отрицательным сдвигом.
 3. Символы не из пула "abcdefghijklmnopqrstuvwxyz" не будут заменены. 
 
+Пример 1:
 ![image](https://user-images.githubusercontent.com/55971950/134964797-29155dd1-8df3-49e0-b819-324f449a80a0.png)
+Пример 2:
 ![image](https://user-images.githubusercontent.com/55971950/134964947-55dc2d2d-79ad-41bb-803e-9e7ab9e75bb9.png)
+Пример 3:
 ![image](https://user-images.githubusercontent.com/55971950/134965052-d07bf6d7-47bd-427a-b2d2-7b1c637931a5.png)
+Пример 4:
 ![image](https://user-images.githubusercontent.com/55971950/134965120-d354a539-2681-4622-8305-2cbc61bf9f3e.png)
 
 
