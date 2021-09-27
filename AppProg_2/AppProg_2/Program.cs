@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace AppProg_2
@@ -69,7 +70,7 @@ namespace AppProg_2
             test = true;
 
             Console.Write("Введите строку: ");
-            var originalStringInCharArray = Console.ReadLine().ToCharArray();
+            var originalStringInCharArray = Console.ReadLine().ToLower().ToCharArray();
             Console.Write("Укажите шаг сдвига: ");
             while (test)
             {
