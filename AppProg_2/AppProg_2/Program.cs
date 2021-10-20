@@ -7,6 +7,10 @@ namespace AppProg_2
 {
     class Program
     {
+        /// <summary>
+        /// Шифровка/дешифровка массива символов(строки).
+        /// </summary>
+        /// <returns>string</returns>
         public static string Calculate(char[] stringInCharArray, int step, char[] alphabet)
         {
             var result = new StringBuilder();
@@ -40,20 +44,46 @@ namespace AppProg_2
             }
             return result.ToString();
         }
-        static void Main(string[] args)
-        {
-            char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-            var choise = 0;
-            var step = 0;
-            bool test = true;
 
-            Console.WriteLine("Меню:\n1: Зашифровать строку.\n2: Расшифровать строку");
+        /// <summary>
+        /// Ввод сдвига для расшифровка/шифровки сообщения.
+        /// </summary>
+        /// <returns>int</returns>
+        public static int InputStep()
+        {
+            var result = 0;
+            bool test = true;
+            Console.Write("Укажите шаг сдвига: ");
             while (test)
             {
                 try
                 {
-                    choise = Convert.ToInt32(Console.ReadLine());
-                    if (choise < 1 || choise > 2)
+                    result = Convert.ToInt32(Console.ReadLine()) % 26;
+                    test = false;
+                }
+                catch
+                {
+                    Console.WriteLine("Вы ввели не число, попробуйте сного ввести число для сдвига.");
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Выбор индекса опции в меню.
+        /// </summary>
+        /// <returns>int</returns>
+        public static int MakeChoice()
+        {
+            Console.WriteLine("Меню:\n1: Зашифровать строку.\n2: Расшифровать строку");
+            var result = 0;
+            bool test = true;
+            while (test)
+            {
+                try
+                {
+                    result = Convert.ToInt32(Console.ReadLine());
+                    if (result < 1 || result > 2)
                     {
                         Console.WriteLine("Такой операции нет, повторите ввод!");
                     }
@@ -67,24 +97,17 @@ namespace AppProg_2
                     Console.WriteLine("Вы ввели не число, попробуйте сного ввести число для выбора операции.");
                 }
             }
-            test = true;
+            return result;
+        }
+        static void Main(string[] args)
+        {
+            char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+            var choise = MakeChoice();
 
             Console.Write("Введите строку: ");
             var originalStringInCharArray = Console.ReadLine().ToLower().ToCharArray();
-            Console.Write("Укажите шаг сдвига: ");
-            while (test)
-            {
-                try
-                {
-                    step = Convert.ToInt32(Console.ReadLine()) % 26;
-                    test = false;
-                }
-                catch
-                {
-                    Console.WriteLine("Вы ввели не число, попробуйте сного ввести число для сдвига.");
-                }
-            }
 
+            var step = InputStep();
             if (choise.Equals(1))
             {
                 Console.Write("Зашифрованная строка: ");
@@ -94,6 +117,7 @@ namespace AppProg_2
                 Console.Write("Расшифрованная строка: ");
                 step *= -1;
             }
+
             var result = Calculate(originalStringInCharArray, step, alphabet);
             Console.WriteLine(result);
         }
